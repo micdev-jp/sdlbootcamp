@@ -1,0 +1,9 @@
+### LARGE_GRAPHIC_ONLY template
+<dl>
+  <dt>imageField</dt>
+  <dd>graphic : 720×360</dd>
+</dl>
+
+![](../../_static/image/large_graphic_only.png "large_graphic_only")
+
+

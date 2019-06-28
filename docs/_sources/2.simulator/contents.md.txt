@@ -1,0 +1,120 @@
+# 2. VehicleSignal Document
+車載SDLユニットに車両情報を通知するためのシミュレータ
+
+## 2.1 起動環境
+<dl>
+  <dt>Ubuntu16.04 LTS</dt>
+  <dd>Python : 3.5.2</dd>
+  <dd>python-OBD : 0.7.0</dd>
+  <dd>websocket-client : 0.56.0</dd>
+  <dd>OBD2アダプタ : ELM327 USB(SsSlct)</dd>
+</dl>
+
+
+## 2.2 通信仕様
+<dl>
+  <dt>WebSocket</dt>
+  <dd>クライアント</dd>
+  <dd>通信プロトコル : HTTP</dd>
+  <dd>IPアドレス : 10.0.0.1</dd>
+  <dd>ポート番号 : 固定(8088)</dd>
+</dl>
+
+
+## 2.3 ソースコード
+以下ソースコードを OBD2_tp.py で保存
+```
+#!/usr/bin/env python3
+
+import sys
+import time
+import websocket
+import obd
+import json
+
+BC_IP_ADDR = "10.0.0.1"
+BC_PORT_NUM = "8088"
+
+webSocket = None
+obd2Connection = None
+
+def Finalize():
+  global webSocket
+  global obd2Connection
+
+  if None != webSocket:
+    webSocket.close()
+
+  if None != obd2Connection:
+    obd2Connection.close()
+
+
+if __name__ == "__main__":
+
+  # WebSocket connect
+  webSocket = websocket.WebSocket()
+  webSocket.connect("ws://" + BC_IP_ADDR + ":" + BC_PORT_NUM + "/")
+  if False == webSocket.connected:
+    print("[ERR] WebSocket Connection Error")
+    Finalize()
+    sys.exit()
+
+  # OBD2 connect
+  obd2Connection = obd.OBD()
+  if obd.OBDStatus.CAR_CONNECTED != obd2Connection.status():
+    print("[ERR] Please connect the OBD2 adapter to the car")
+    Finalize()
+    sys.exit()
+
+  for i in range(5):
+    # OBD2 get param
+    speedObj = obd2Connection.query( obd.commands.SPEED );
+    if None == speedObj.value:
+      print("[ERR] [SPEED] Get Error")
+      Finalize()
+      sys.exit()
+
+    throttleObj = obd2Connection.query( obd.commands.THROTTLE_POS )
+    if None == throttleObj.value:
+      print("[ERR] [THROTTLE_POS] Get Error")
+      Finalize()
+      sys.exit()
+
+    # Send to SDL BOOT CAMP
+    speed = speedObj.value.magnitude
+    throttlePos = throttleObj.value.magnitude
+
+    sendData = json.dumps( {"VehicleData": {"speed":speed, "accPedalPosition":throttlePos} })
+    # print( sendData )
+    webSocket.send( sendData )
+
+    # 500msec
+    time.sleep(0.5)
+
+  # Exit
+  Finalize()
+```
+
+## 2.4 サンプルプログラム確認手順
+1. 実車、ubuntu-PCをOBD2アダプタで接続
+1. SDLBOOTCAMPとPCをwifi接続
+1. サンプルプログラム起動し、端末ログから速度、アクセルペダル位置が取得できることを確認
+
+サンプルプログラム起動
+
+```
+$ python3 OBD2_tp.py
+```
+
+
+
+## 参考情報
+### python3環境構築(ubuntu 16.04(64bit))
+```
+$ sudo apt-get install python3-pip
+$ pip3 install websocket-client
+$ pip3 install obd
+```
+
+### python-OBD詳細情報
+[https://python-obd.readthedocs.io/en/latest/](https://python-obd.readthedocs.io/en/latest/)

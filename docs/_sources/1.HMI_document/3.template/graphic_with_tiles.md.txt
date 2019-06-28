@@ -1,0 +1,10 @@
+### GRAPHIC_WITH_TILES template
+<dl>
+  <dt>imageField</dt>
+  <dd>graphic : 360×360</dd>
+  <dt>softButton : 4 (softButtonのimage対応)</dt>
+</dl>
+
+![](../../_static/image/graphic_with_tiles.png "graphic_with_tiles")
+
+

@@ -1,0 +1,15 @@
+### TEXT_WITH_GRAPHIC template
+<dl>
+  <dt>textField</dt>
+  <dd>mainField1</dd>
+  <dd>mainField2</dd>
+  <dd>mainField3</dd>
+  <dd>mainField4</dd>
+  <dd>statusBar</dd>
+  <dt>imageField</dt>
+  <dd>graphic : 360×360</dd>
+</dl>
+
+![](../../_static/image/text_with_graphic.png "text_with_graphic")
+
+

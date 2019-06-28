@@ -1,0 +1,10 @@
+### LARGE_GRAPHIC_WITH_SOFTBUTTONS template
+<dl>
+  <dt>imageField</dt>
+  <dd>graphic : 720×360</dd>
+  <dt>softButton : 5</dt>
+</dl>
+
+![](../../_static/image/large_graphic_with_softbuttons.png "large_graphic_with_softbuttons")
+
+

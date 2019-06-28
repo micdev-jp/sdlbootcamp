@@ -1,0 +1,11 @@
+### Slider
+スライドバーを表示。
+<dl>
+  <dt>textField</dt>
+  <dd>sliderHeader</dd>
+  <dd>sliderFooter</dd>
+</dl>
+
+![](../../_static/image/slider.png "slider")
+
+

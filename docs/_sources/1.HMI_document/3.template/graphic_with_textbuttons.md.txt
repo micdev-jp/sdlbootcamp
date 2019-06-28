@@ -1,0 +1,10 @@
+### GRAPHIC_WITH_TEXTBUTTONS template
+<dl>
+  <dt>imageField</dt>
+  <dd>graphic : 360×360</dd>
+  <dt>softButton : 6</dt>
+</dl>
+
+![](../../_static/image/graphic_with_textbuttons.png "graphic_with_textbuttons")
+
+

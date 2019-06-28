@@ -1,0 +1,13 @@
+### Alert
+警告メッセージを表示。画像では、textField2つ、softButton2つだが増減可能。
+<dl>
+  <dt>textField</dt>
+  <dd>alertText1</dd>
+  <dd>alertText2</dd>
+  <dd>alertText3</dd>
+  <dt>softButton : 3</dt>
+</dl>
+
+![](../../_static/image/alert.png "alert")
+
+

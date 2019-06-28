@@ -1,0 +1,9 @@
+### ONSCREEN_PRESETS template
+### NAV_FULLSCREEN_MAP template
+### NAV_LIST template
+### NAV_KEYBOARD template
+Streaming画面。タッチ座標対応。
+
+![](../../_static/image/fullscreen.png "fullscreen")
+
+

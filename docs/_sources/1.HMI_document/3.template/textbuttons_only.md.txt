@@ -1,0 +1,8 @@
+### TEXTBUTTONS_ONLY template
+<dl>
+  <dt>softButton : 8</dt>
+</dl>
+
+![](../../_static/image/textbuttons_only.png "textbuttons_only")
+
+

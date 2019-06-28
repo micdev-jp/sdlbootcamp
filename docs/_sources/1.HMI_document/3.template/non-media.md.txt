@@ -1,0 +1,17 @@
+### NON-MEDIA template
+<dl>
+  <dt>textField</dt>
+  <dd>mainField1</dd>
+  <dd>mainField2</dd>
+  <dd>mainField3</dd>
+  <dd>mainField4</dd>
+  <dd>statusBar</dd>
+  <dt>imageField</dt>
+  <dd>graphic : 120×120</dd>
+  <dd>secondaryGraphic : 120×120</dd>
+  <dt>softButton : 2</dt>
+</dl>
+
+![](../../_static/image/non-media.png "non-media")
+
+

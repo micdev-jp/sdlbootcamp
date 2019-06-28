@@ -1,0 +1,36 @@
+# 0. sdlbootcamp
+
+## 0.1 必要機材
+- 基板
+  - Raspberry Pi 3 Model B
+
+    [https://www.raspberrypi.org/products/raspberry-pi-3-model-b/](https://www.raspberrypi.org/products/raspberry-pi-3-model-b/)
+
+- タッチディスプレイ
+  - Raspberry Pi Touch Display
+
+    [https://www.raspberrypi.org/products/raspberry-pi-touch-display/](https://www.raspberrypi.org/products/raspberry-pi-touch-display/)
+
+- ケース
+  - メーカー品番 : ASM-1900035-21
+
+    [https://www.digikey.jp/](https://www.digikey.jp/product-detail/ja/raspberry-pi/ASM-1900035-21/1690-1008-ND/6152807?utm_adgroup=&mkwid=sJVWiWnrD&pcrid=330592134631&pkw=&pmt=&pdv=c&productid=6152807&&gclid=CjwKCAjwxrzoBRBBEiwAbtX1ny__PQMsX2IN7cOlgjb5TJZ92-UoWWdGltVtuMbjWxpsLmbwcuvOHBoCypgQAvD_BwE)
+
+- メディア
+  - microSDメモリーカード (1GB以上)
+
+- 電源ケーブル
+  - USBケーブル(micro USB Type-B)
+
+
+## 0.2 LOG取得
+- sshでログイン確認
+```
+$ ssh root@10.0.0.1
+$ cd /var/log
+$ tail sdlc.log
+```
+* scpでログファイルを取得する
+```
+$ scp root@10.0.0.1:/var/log/sdlc.log ./
+```
