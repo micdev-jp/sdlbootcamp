@@ -26,7 +26,7 @@
 
 ## 0.2 ブート用SDカード作成方法
 * イメージをダウンロード
-<br>(URL)
+<br>[https://github.com/micdev-jp/sdlbootcamp/tree/master/img](https://github.com/micdev-jp/sdlbootcamp/tree/master/img)
 * SDカードに焼く (SDカードが /dev/sdx にマウントされている場合)
 ```
 $ gip -dc < sdlbootcamp.img.gz | sudo dd of=/dev/sdx bs=4M
