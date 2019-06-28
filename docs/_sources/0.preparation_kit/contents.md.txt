@@ -1,0 +1,43 @@
+# 0. SDLBOOTCAMP
+
+## 0.1 必要機材
+
+(参考)<br>
+[Raspberry Pi 7インチ タッチ・スクリーン ディスプレイ 接続・取り付け方法](https://raspberry-pi.ksyic.com/page/page/pgp.id/4)
+
+- 基板
+  - Raspberry Pi 3 Model B
+    <br>[https://www.raspberrypi.org/products/raspberry-pi-3-model-b/](https://www.raspberrypi.org/products/raspberry-pi-3-model-b/)
+
+- タッチディスプレイ
+  - Raspberry Pi Touch Display
+    <br>[https://www.raspberrypi.org/products/raspberry-pi-touch-display/](https://www.raspberrypi.org/products/raspberry-pi-touch-display/)
+
+- ケース
+  - メーカー品番 : ASM-1900035-21
+    <br>[https://www.digikey.jp/](https://www.digikey.jp/product-detail/ja/raspberry-pi/ASM-1900035-21/1690-1008-ND/6152807?utm_adgroup=&mkwid=sJVWiWnrD&pcrid=330592134631&pkw=&pmt=&pdv=c&productid=6152807&&gclid=CjwKCAjwxrzoBRBBEiwAbtX1ny__PQMsX2IN7cOlgjb5TJZ92-UoWWdGltVtuMbjWxpsLmbwcuvOHBoCypgQAvD_BwE)
+
+- ブート用メディア
+  - microSDメモリーカード (1GB以上)
+
+- 電源ケーブル
+  - USBケーブル(micro USB Type-B)
+
+
+## 0.2 ブート用SDカード作成方法
+* イメージをダウンロード
+<br>(URL)
+* SDカードに焼く (SDカードが /dev/sdx にマウントされている場合)
+```
+$ gip -dc < sdlbootcamp.img.gz | sudo dd of=/dev/sdx bs=4M
+$ sync
+```
+## 0.3 SDLBOOTCAMP組立～起動
+こちらを参照してください<br>
+[Raspberry Pi 7インチ タッチ・スクリーン ディスプレイ 接続・取り付け方法](https://raspberry-pi.ksyic.com/page/page/pgp.id/4)
+
+## 0.4 SDLBOOTCAMPのログ取得方法 (sshを使う)
+```
+$ scp root@10.0.0.1:/var/log/sdlc.log ./
+(check sdlc.log)
+```

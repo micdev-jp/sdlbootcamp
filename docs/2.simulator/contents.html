@@ -1,0 +1,234 @@
+
+
+<!doctype html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <title>2. VehicleSignal Document &#8212; SDLBOOTCAMP  ドキュメント</title>
+    <link rel="stylesheet" href="../_static/bizstyle.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script type="text/javascript" src="../_static/translations.js"></script>
+    <script type="text/javascript" src="../_static/bizstyle.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="検索" href="../search.html" />
+    <link rel="prev" title="1. HMI Document" href="../1.HMI_document/contents.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>ナビゲーション</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="総合索引"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="../1.HMI_document/contents.html" title="1. HMI Document"
+             accesskey="P">前へ</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">SDLBOOTCAMP  ドキュメント</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../index.html">
+              <img class="logo" src="../_static/sdlbootcamp.png" alt="Logo"/>
+            </a></p>
+  <h3><a href="../index.html">目次</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">2. VehicleSignal Document</a><ul>
+<li><a class="reference internal" href="#id1">2.1 動作確認環境</a></li>
+<li><a class="reference internal" href="#id2">2.2 通信仕様</a></li>
+<li><a class="reference internal" href="#id3">2.3 サンプルソースコード</a></li>
+<li><a class="reference internal" href="#id4">2.4 サンプルプログラム確認手順</a></li>
+<li><a class="reference internal" href="#id5">参考情報</a><ul>
+<li><a class="reference internal" href="#python3-ubuntu-16-04-64bit">python3環境構築(ubuntu 16.04(64bit))</a></li>
+<li><a class="reference internal" href="#python-obd">python-OBD詳細情報</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>前のトピックへ</h4>
+  <p class="topless"><a href="../1.HMI_document/contents.html"
+                        title="前の章へ">1. HMI Document</a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">クイック検索</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="検索" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="vehiclesignal-document">
+<h1>2. VehicleSignal Document<a class="headerlink" href="#vehiclesignal-document" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<p>SDLBOOTCAMPに車両情報を通知するためのシミュレータ</p>
+<div class="section" id="id1">
+<h2>2.1 動作確認環境<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<dl>
+  <dt>Ubuntu16.04 LTS</dt>
+  <dd>Python : 3.5.2</dd>
+  <dd>python-OBD : 0.7.0</dd>
+  <dd>websocket-client : 0.56.0</dd>
+  <dd>OBD2アダプタ : ELM327 USB(SsSlct)</dd>
+</dl></div>
+<div class="section" id="id2">
+<h2>2.2 通信仕様<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<dl>
+  <dt>SDLBOOTCAMP側仕様</dt>
+  <dd>無線仕様 : Wi-Fi direct [IEEE 802.11b/g/n]</dd>
+  <dd>IPアドレス : 10.0.0.1</dd>
+  <dd>ポート番号 : 固定(8088)</dd>
+	<dd>SSID : sdlbootcamp </dd>
+	<dd>暗号キー : sdlbootcamp </dd>
+</dl></div>
+<div class="section" id="id3">
+<h2>2.3 サンプルソースコード<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>OBD2_tp.py</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
+
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">websocket</span>
+<span class="kn">import</span> <span class="nn">obd</span>
+<span class="kn">import</span> <span class="nn">json</span>
+
+<span class="n">BC_IP_ADDR</span> <span class="o">=</span> <span class="s2">&quot;10.0.0.1&quot;</span>
+<span class="n">BC_PORT_NUM</span> <span class="o">=</span> <span class="s2">&quot;8088&quot;</span>
+
+<span class="n">webSocket</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="n">obd2Connection</span> <span class="o">=</span> <span class="kc">None</span>
+
+<span class="k">def</span> <span class="nf">Finalize</span><span class="p">():</span>
+  <span class="k">global</span> <span class="n">webSocket</span>
+  <span class="k">global</span> <span class="n">obd2Connection</span>
+
+  <span class="k">if</span> <span class="kc">None</span> <span class="o">!=</span> <span class="n">webSocket</span><span class="p">:</span>
+    <span class="n">webSocket</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+  <span class="k">if</span> <span class="kc">None</span> <span class="o">!=</span> <span class="n">obd2Connection</span><span class="p">:</span>
+    <span class="n">obd2Connection</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+
+  <span class="c1"># WebSocket connect</span>
+  <span class="n">webSocket</span> <span class="o">=</span> <span class="n">websocket</span><span class="o">.</span><span class="n">WebSocket</span><span class="p">()</span>
+  <span class="n">webSocket</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">&quot;ws://&quot;</span> <span class="o">+</span> <span class="n">BC_IP_ADDR</span> <span class="o">+</span> <span class="s2">&quot;:&quot;</span> <span class="o">+</span> <span class="n">BC_PORT_NUM</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span><span class="p">)</span>
+  <span class="k">if</span> <span class="kc">False</span> <span class="o">==</span> <span class="n">webSocket</span><span class="o">.</span><span class="n">connected</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;[ERR] WebSocket Connection Error&quot;</span><span class="p">)</span>
+    <span class="n">Finalize</span><span class="p">()</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">()</span>
+
+  <span class="c1"># OBD2 connect</span>
+  <span class="n">obd2Connection</span> <span class="o">=</span> <span class="n">obd</span><span class="o">.</span><span class="n">OBD</span><span class="p">()</span>
+  <span class="k">if</span> <span class="n">obd</span><span class="o">.</span><span class="n">OBDStatus</span><span class="o">.</span><span class="n">CAR_CONNECTED</span> <span class="o">!=</span> <span class="n">obd2Connection</span><span class="o">.</span><span class="n">status</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;[ERR] Please connect the OBD2 adapter to the car&quot;</span><span class="p">)</span>
+    <span class="n">Finalize</span><span class="p">()</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">()</span>
+
+  <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="c1"># OBD2 get param</span>
+    <span class="n">speedObj</span> <span class="o">=</span> <span class="n">obd2Connection</span><span class="o">.</span><span class="n">query</span><span class="p">(</span> <span class="n">obd</span><span class="o">.</span><span class="n">commands</span><span class="o">.</span><span class="n">SPEED</span> <span class="p">);</span>
+    <span class="k">if</span> <span class="kc">None</span> <span class="o">==</span> <span class="n">speedObj</span><span class="o">.</span><span class="n">value</span><span class="p">:</span>
+      <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;[ERR] [SPEED] Get Error&quot;</span><span class="p">)</span>
+      <span class="n">Finalize</span><span class="p">()</span>
+      <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">()</span>
+
+    <span class="n">throttleObj</span> <span class="o">=</span> <span class="n">obd2Connection</span><span class="o">.</span><span class="n">query</span><span class="p">(</span> <span class="n">obd</span><span class="o">.</span><span class="n">commands</span><span class="o">.</span><span class="n">THROTTLE_POS</span> <span class="p">)</span>
+    <span class="k">if</span> <span class="kc">None</span> <span class="o">==</span> <span class="n">throttleObj</span><span class="o">.</span><span class="n">value</span><span class="p">:</span>
+      <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;[ERR] [THROTTLE_POS] Get Error&quot;</span><span class="p">)</span>
+      <span class="n">Finalize</span><span class="p">()</span>
+      <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">()</span>
+
+    <span class="c1"># Send to SDL BOOT CAMP</span>
+    <span class="n">speed</span> <span class="o">=</span> <span class="n">speedObj</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">magnitude</span>
+    <span class="n">throttlePos</span> <span class="o">=</span> <span class="n">throttleObj</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">magnitude</span>
+
+    <span class="n">sendData</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span> <span class="p">{</span><span class="s2">&quot;VehicleData&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;speed&quot;</span><span class="p">:</span><span class="n">speed</span><span class="p">,</span> <span class="s2">&quot;accPedalPosition&quot;</span><span class="p">:</span><span class="n">throttlePos</span><span class="p">}</span> <span class="p">})</span>
+    <span class="c1"># print( sendData )</span>
+    <span class="n">webSocket</span><span class="o">.</span><span class="n">send</span><span class="p">(</span> <span class="n">sendData</span> <span class="p">)</span>
+
+    <span class="c1"># 500msec</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+
+  <span class="c1"># Exit</span>
+  <span class="n">Finalize</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>2.4 サンプルプログラム確認手順<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ol>
+<li><p>実車、ubuntu-PC を OBD2アダプタ で接続</p></li>
+<li><p>SDLBOOTCAMP と PC を wifi接続</p></li>
+<li><p>サンプルプログラム起動し、SDLBOOTCAMPのログから速度、アクセルペダル位置が取得できることを確認</p>
+<ul>
+<li><p>サンプルプログラム起動方法</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ python3 OBD2_tp.py
+</pre></div>
+</div>
+</li>
+</ul>
+</li>
+</ol>
+</div>
+<div class="section" id="id5">
+<h2>参考情報<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="python3-ubuntu-16-04-64bit">
+<h3>python3環境構築(ubuntu 16.04(64bit))<a class="headerlink" href="#python3-ubuntu-16-04-64bit" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo apt-get install python3-pip
+$ pip3 install websocket-client
+$ pip3 install obd
+</pre></div>
+</div>
+</div>
+<div class="section" id="python-obd">
+<h3>python-OBD詳細情報<a class="headerlink" href="#python-obd" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p><a class="reference external" href="https://python-obd.readthedocs.io/en/latest/">https://python-obd.readthedocs.io/en/latest/</a></p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>ナビゲーション</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="総合索引"
+             >索引</a></li>
+        <li class="right" >
+          <a href="../1.HMI_document/contents.html" title="1. HMI Document"
+             >前へ</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">SDLBOOTCAMP  ドキュメント</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, micware.
+      このドキュメントは <a href="http://sphinx-doc.org/">Sphinx</a> 2.1.2 で生成しました。
+    </div>
+  </body>
+</html>

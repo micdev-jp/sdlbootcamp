@@ -1,0 +1,15 @@
+### TEXT_AND_SOFTBUTTONS_WITH_GRAPHIC template
+<dl>
+  <dt>textField</dt>
+  <dd>mainField1</dd>
+  <dd>mainField2</dd>
+  <dd>mainField3</dd>
+  <dd>mainField4</dd>
+  <dt>imageField</dt>
+  <dd>graphic : 360×360</dd>
+  <dt>softButton : 6</dt>
+</dl>
+
+<img src="../../_static/image/text_and_softbuttons_with_graphic.png" width=50%>
+
+

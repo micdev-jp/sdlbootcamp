@@ -1,0 +1,48 @@
+# 1. HMI Document
+SDLBOOTCAMPのHMIドキュメント
+
+## 1.1 openning画面
+起動した時に表示される画面のため、特に操作することはない。
+
+<img src="../_static/image/openning.png" width=50%>
+
+
+## 1.2 appList画面
+coreから送られてきたappListを表示。アプリを選択するにはアイコンをタッチする。
+
+<img src="../_static/image/applist.png" width=50%>
+
+
+## 1.3 template画面
+UIのコマンド、SetDisplayLayoutによってtemplateを変えることでアプリ側から表示するものを自由に変えることができる。
+
+- [DEFAULT template](3.template/default)
+- [MEDIA template](3.template/media)
+- [NON-MEDIA template](3.template/non-media)
+- [ONSCREEN_PRESETS template](3.template/fullscreen)
+- [NAV_FULLSCREEN_MAP template](3.template/fullscreen)
+- [NAV_LIST template](3.template/fullscreen)
+- [NAV_KEYBOARD template](3.template/fullscreen)
+- [GRAPHIC_WITH_TEXT template](3.template/graphic_with_text)
+- [TEXT_WITH_GRAPHIC template](3.template/text_with_graphic)
+- [TILES_ONLY template](3.template/tiles_only)
+- [TEXTBUTTONS_ONLY template](3.template/textbuttons_only)
+- [GRAPHIC_WITH_TILES template](3.template/graphic_with_tiles)
+- [TILES_WITH_GRAPHIC template](3.template/tiles_with_graphic)
+- [GRAPHIC_WITH_TEXT_AND_SOFTBUTTONS template](3.template/graphic_with_text_and_softbuttons)
+- [TEXT_AND_SOFTBUTTONS_WITH_GRAPHIC template](3.template/text_and_softbuttons_with_graphic)
+- [GRAPHIC_WITH_TEXTBUTTONS template](3.template/graphic_with_textbuttons)
+- [TEXTBUTTONS_WITH_GRAPHIC template](3.template/textbuttons_with_graphic)
+- [LARGE_GRAPHIC_WITH_SOFTBUTTONS template](3.template/large_graphic_with_softbuttons)
+- [DOUBLE_GRAPHIC_WITH_SOFTBUTTONS template](3.template/double_graphic_with_softbuttons)
+- [LARGE_GRAPHIC_ONLY template](3.template/large_graphic_only)
+
+
+## 1.4 popup画面
+UIコマンド、Alert、ScrollableMessage、Sliderのpopupウィンドウ画面。
+
+- [Alert](4.popup/alert)
+- [ScrollableMessage](4.popup/scroll)
+- [Slider](4.popup/slider)
+
+

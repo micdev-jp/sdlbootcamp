@@ -1,0 +1,9 @@
+### LARGE_GRAPHIC_ONLY template
+<dl>
+  <dt>imageField</dt>
+  <dd>graphic : 720×360</dd>
+</dl>
+
+<img src="../../_static/image/large_graphic_only.png" width=50%>
+
+

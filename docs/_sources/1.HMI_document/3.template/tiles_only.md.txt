@@ -1,0 +1,8 @@
+### TILES_ONLY template
+<dl>
+  <dt>softButton : 8 (softButtonのimage対応)</dt>
+</dl>
+
+<img src="../../_static/image/tiles_only.png" width=50%>
+
+

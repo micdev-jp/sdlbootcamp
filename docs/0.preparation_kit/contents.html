@@ -1,0 +1,172 @@
+
+
+<!doctype html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <title>0. SDLBOOTCAMP &#8212; SDLBOOTCAMP  ドキュメント</title>
+    <link rel="stylesheet" href="../_static/bizstyle.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script type="text/javascript" src="../_static/translations.js"></script>
+    <script type="text/javascript" src="../_static/bizstyle.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="検索" href="../search.html" />
+    <link rel="next" title="1. HMI Document" href="../1.HMI_document/contents.html" />
+    <link rel="prev" title="SDLBOOTCAMP documentation" href="../index.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>ナビゲーション</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="総合索引"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="../1.HMI_document/contents.html" title="1. HMI Document"
+             accesskey="N">次へ</a> |</li>
+        <li class="right" >
+          <a href="../index.html" title="SDLBOOTCAMP documentation"
+             accesskey="P">前へ</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">SDLBOOTCAMP  ドキュメント</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../index.html">
+              <img class="logo" src="../_static/sdlbootcamp.png" alt="Logo"/>
+            </a></p>
+  <h3><a href="../index.html">目次</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">0. SDLBOOTCAMP</a><ul>
+<li><a class="reference internal" href="#id1">0.1 必要機材</a></li>
+<li><a class="reference internal" href="#sd">0.2 ブート用SDカード作成方法</a></li>
+<li><a class="reference internal" href="#id2">0.3 SDLBOOTCAMP組立～起動</a></li>
+<li><a class="reference internal" href="#sdlbootcamp-ssh">0.4 SDLBOOTCAMPのログ取得方法 (sshを使う)</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>前のトピックへ</h4>
+  <p class="topless"><a href="../index.html"
+                        title="前の章へ">SDLBOOTCAMP documentation</a></p>
+  <h4>次のトピックへ</h4>
+  <p class="topless"><a href="../1.HMI_document/contents.html"
+                        title="次の章へ">1. HMI Document</a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">クイック検索</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="検索" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="sdlbootcamp">
+<h1>0. SDLBOOTCAMP<a class="headerlink" href="#sdlbootcamp" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<div class="section" id="id1">
+<h2>0.1 必要機材<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>(参考)<br>
+<a class="reference external" href="https://raspberry-pi.ksyic.com/page/page/pgp.id/4">Raspberry Pi 7インチ タッチ・スクリーン ディスプレイ 接続・取り付け方法</a></p>
+<ul class="simple">
+<li><p>基板</p>
+<ul>
+<li><p>Raspberry Pi 3 Model B
+<br><a class="reference external" href="https://www.raspberrypi.org/products/raspberry-pi-3-model-b/">https://www.raspberrypi.org/products/raspberry-pi-3-model-b/</a></p></li>
+</ul>
+</li>
+<li><p>タッチディスプレイ</p>
+<ul>
+<li><p>Raspberry Pi Touch Display
+<br><a class="reference external" href="https://www.raspberrypi.org/products/raspberry-pi-touch-display/">https://www.raspberrypi.org/products/raspberry-pi-touch-display/</a></p></li>
+</ul>
+</li>
+<li><p>ケース</p>
+<ul>
+<li><p>メーカー品番 : ASM-1900035-21
+<br><a class="reference external" href="https://www.digikey.jp/product-detail/ja/raspberry-pi/ASM-1900035-21/1690-1008-ND/6152807?utm_adgroup=&amp;mkwid=sJVWiWnrD&amp;pcrid=330592134631&amp;pkw=&amp;pmt=&amp;pdv=c&amp;productid=6152807&amp;&amp;gclid=CjwKCAjwxrzoBRBBEiwAbtX1ny__PQMsX2IN7cOlgjb5TJZ92-UoWWdGltVtuMbjWxpsLmbwcuvOHBoCypgQAvD_BwE">https://www.digikey.jp/</a></p></li>
+</ul>
+</li>
+<li><p>ブート用メディア</p>
+<ul>
+<li><p>microSDメモリーカード (1GB以上)</p></li>
+</ul>
+</li>
+<li><p>電源ケーブル</p>
+<ul>
+<li><p>USBケーブル(micro USB Type-B)</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="sd">
+<h2>0.2 ブート用SDカード作成方法<a class="headerlink" href="#sd" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul class="simple">
+<li><p>イメージをダウンロード
+<br>(URL)</p></li>
+<li><p>SDカードに焼く (SDカードが /dev/sdx にマウントされている場合)</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ gip -dc &lt; sdlbootcamp.img.gz | sudo dd of=/dev/sdx bs=4M
+$ sync
+</pre></div>
+</div>
+</div>
+<div class="section" id="id2">
+<h2>0.3 SDLBOOTCAMP組立～起動<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>こちらを参照してください<br>
+<a class="reference external" href="https://raspberry-pi.ksyic.com/page/page/pgp.id/4">Raspberry Pi 7インチ タッチ・スクリーン ディスプレイ 接続・取り付け方法</a></p>
+</div>
+<div class="section" id="sdlbootcamp-ssh">
+<h2>0.4 SDLBOOTCAMPのログ取得方法 (sshを使う)<a class="headerlink" href="#sdlbootcamp-ssh" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ scp root@10.0.0.1:/var/log/sdlc.log ./
+(check sdlc.log)
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>ナビゲーション</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="総合索引"
+             >索引</a></li>
+        <li class="right" >
+          <a href="../1.HMI_document/contents.html" title="1. HMI Document"
+             >次へ</a> |</li>
+        <li class="right" >
+          <a href="../index.html" title="SDLBOOTCAMP documentation"
+             >前へ</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">SDLBOOTCAMP  ドキュメント</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, micware.
+      このドキュメントは <a href="http://sphinx-doc.org/">Sphinx</a> 2.1.2 で生成しました。
+    </div>
+  </body>
+</html>

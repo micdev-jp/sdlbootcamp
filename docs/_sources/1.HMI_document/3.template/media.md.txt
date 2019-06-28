@@ -1,0 +1,15 @@
+### MEDIA template
+<dl>
+  <dt>textField</dt>
+  <dd>mainField1</dd>
+  <dd>mainField2</dd>
+  <dd>mediaClock</dd>
+  <dd>mediaTrack</dd>
+  <dt>imageField</dt>
+  <dd>graphic : 280×280</dd>
+  <dt>softButton : 5</dt>
+</dl>
+
+<img src="../../_static/image/media.png" width=50%>
+
+

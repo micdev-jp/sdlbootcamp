@@ -1,0 +1,11 @@
+### DOUBLE_GRAPHIC_WITH_SOFTBUTTONS template
+<dl>
+  <dt>imageField</dt>
+  <dd>graphic : 360×360</dd>
+  <dd>secondaryGraphic : 360×360</dd>
+  <dt>softButton : 5</dt>
+</dl>
+
+<img src="../../_static/image/double_graphic_with_softbuttons.png" width=50%>
+
+

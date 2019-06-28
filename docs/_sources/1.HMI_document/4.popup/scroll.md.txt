@@ -1,0 +1,10 @@
+### ScrollableMessage
+複数行にまた上がるメッセージを表示することができる。
+<dl>
+  <dt>textField</dt>
+  <dd>scrollableMessageBody</dd>
+</dl>
+
+![](../../_static/image/scroll.png "scroll")
+
+
