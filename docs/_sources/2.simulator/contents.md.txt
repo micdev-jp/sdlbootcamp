@@ -120,133 +120,230 @@ $ pip3 install obd
 [https://python-obd.readthedocs.io/en/latest/](https://python-obd.readthedocs.io/en/latest/)
 
 ### 実装済みパラメータ
-SDL-CORE Ver4.5.1 に準拠している。
-以下は、JSONフォーマット。
-
-VehicleData
-- speed  
-float型、0〜700(1.0e-1)
-
-- prndl  
-string型、以下から選択。
-  - PARK
-  - REVERSE
-  - NEUTRAL
-  - DRIVE
-  - SPORT
-  - LOWGEAR
-  - FIRST
-  - SECOND
-  - THIRD
-  - FOURTH
-  - FIFTH
-  - SIXTH
-  - SEVENTH
-  - EIGHTH
-  - UNKNOWN
-  - FAULT
-
-- gps
-  - longitudeDegrees  
-  float型、-180〜180(1.0e-5)
-  - latitudeDegrees  
-  float型、-90〜90(1.0e-5)
-  - utcYear  
-  int型、2010〜2100
-  - utcMonth  
-  int型、1〜12
-  - utcDay  
-  int型、1〜31
-  - utcHours  
-  int型、0〜23
-  - utcMinutes  
-  int型、0〜59
-  - utcSeconds  
-  int型、0〜59
-  - compassDirection  
-  string型、以下から選択。
-    - NORTH
-    - NORTHWEST
-    - WEST
-    - SOUTHWEST
-    - SOUTH
-    - SOUTHEAST
-    - EAST
-    - NORTHEAST
-  - pdop  
-  float型、0〜1000(1.0e-2)
-  - hdop  
-  float型、0〜1000(1.0e-2)
-  - vdop  
-  float型、0〜1000(1.0e-2)
-  - actual  
-  bool型
-  - satellites  
-  int型、0〜31
-  - dimension  
-  string型、以下から選択。
-    - NO_FIX
-    - 2D
-    - 3D
-  - altitude  
-  float型、-10000〜10000(1.0e-1)
-  - heading  
-  float型、0〜359.99(1.0e-2)
-  - speed  
-  float型、0〜500(1.0e-1)
-
-- bodyInformation
-  - parkBrakeActive  
-  bool型
-  - ignitionStableStatus  
-  string型、以下から選択。
-    - IGNITION_SWITCH_NOT_STABLE
-    - IGNITION_SWITCH_STABLE
-    - MISSING_FROM_TRANSMITTER
-  - ignitionStatus  
-  string型、以下から選択。
-    - UNKNOWN
-    - OFF
-    - ACCESSORY
-    - RUN
-    - START
-    - INVALID
-  - driverDoorAjar  
-  string型、以下から選択。
-    - None
-    - false
-    - true
-  - passengerDoorAjar  
-  string型、以下から選択。
-    - None
-    - false
-    - true
-  - rearLeftDoorAjar  
-  string型、以下から選択。
-    - None
-    - false
-    - true
-  - rearRightDoorAjar  
-  string型、以下から選択。
-    - None
-    - false
-    - true
-
-- headLampStatus
-  - lowBeamsOn  
-  bool型
-  - highBeamsOn  
-  bool型
-  - ambientLightSensorStatus  
-  string型、以下から選択。
-    - NIGHT
-    - TWILIGHT_1
-    - TWILIGHT_2
-    - TWILIGHT_3
-    - TWILIGHT_4
-    - DAY
-    - UNKNOWN
-    - INVALID
-
-- accPedalPosition  
-float型、0〜100(1.0e-1)
+SDL-CORE Ver4.5.1 に準拠している。<br>
+JSON schema
+```
+"vehicleInfo": {
+  "type": "object",
+  "properties": {
+    "speed": {
+      "type": "number",
+      "minimum": 0.0,
+      "maximum": 700.0
+    },
+    "prndl": {
+      "type": "string",
+      "enum": [
+        "PARK",
+        "REVERSE",
+        "NEUTRAL",
+        "DRIVE",
+        "SPORT",
+        "LOWGEAR",
+        "FIRST",
+        "SECOND",
+        "THIRD",
+        "FOURTH",
+        "FIFTH",
+        "SIXTH",
+        "SEVENTH",
+        "EIGHTH",
+        "UNKNOWN",
+        "FAULT"
+      ]
+    },
+    "gps": {
+      "type": "object",
+      "properties": {
+        "longitudeDegrees": {
+          "type": "number",
+          "minimum": -180.00000,
+          "maximum": 180.00000
+        },
+        "latitudeDegrees": {
+          "type": "number",
+          "minimum": -90.00000,
+          "maximum": 90.00000
+        },
+        "utcYear": {
+          "type": "integer",
+          "minimum": 2010,
+          "maximum": 2100
+        },
+        "utcMonth": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 12
+        },
+        "utcDay": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 31
+        },
+        "utcHours": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 23
+        },
+        "utcMinutes": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 59
+        },
+        "utcSeconds": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 59
+        },
+        "compassDirection": {
+          "type": "string",
+          "enum": [
+            "NORTH",
+            "NORTHWEST",
+            "WEST",
+            "SOUTHWEST",
+            "SOUTH",
+            "SOUTHEAST",
+            "EAST",
+            "NORTHEAST"
+          ]
+        },
+        "pdop": {
+          "type": "number",
+          "minimum": 0.00,
+          "maximum": 1000.00
+        },
+        "hdop": {
+          "type": "number",
+          "minimum": 0.00,
+          "maximum": 1000.00
+        },
+        "vdop": {
+          "type": "number",
+          "minimum": 0.00,
+          "maximum": 1000.00
+        },
+        "actual": {
+          "type": "boolean"
+        },
+        "satellites": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 31
+        },
+        "dimension": {
+          "type": "string",
+          "enum": [
+            "NO_FIX",
+            "2D",
+            "3D"
+          ]
+        },
+        "altitude": {
+          "type": "number",
+          "minimum": -10000.0,
+          "maximum": 10000.0
+        },
+        "heading": {
+          "type": "number",
+          "minimum": 0.00,
+          "maximum": 359.99
+        },
+        "speed": {
+          "type": "number",
+          "minimum": 0.0,
+          "maximum": 500.0
+        }
+      }
+    },
+    "bodyInformation": {
+      "type": "object",
+      "properties": {
+        "parkBrakeActive": {
+          "type": "boolean"
+        },
+        "ignitionStableStatus": {
+          "type": "string",
+          "enum": [
+            "IGNITION_SWITCH_NOT_STABLE",
+            "IGNITION_SWITCH_STABLE",
+            "MISSING_FROM_TRANSMITTER"
+          ]
+        },
+        "ignitionStatus": {
+          "type": "string",
+          "enum": [
+            "UNKNOWN",
+            "OFF",
+            "ACCESSORY",
+            "RUN",
+            "START",
+            "INVALID"
+          ]
+        },
+        "driverDoorAjar": {
+          "type": "string",
+          "enum": [
+            "None",
+            "false",
+            "true"
+          ]
+        },
+        "passengerDoorAjar": {
+          "type": "string",
+          "enum": [
+            "None",
+            "false",
+            "true"
+          ]
+        },
+        "rearLeftDoorAjar": {
+          "type": "string",
+          "enum": [
+            "None",
+            "false",
+            "true"
+          ]
+        },
+        "rearRightDoorAjar": {
+          "type": "string",
+          "enum": [
+            "None",
+            "false",
+            "true"
+          ]
+        }
+      }
+    },
+    "headLampStatus": {
+      "type": "object",
+      "properties": {
+        "lowBeamsOn": {
+          "type": "boolean"
+        },
+        "highBeamsOn": {
+          "type": "boolean"
+        },
+        "ambientLightSensorStatus": {
+          "type": "string",
+          "enum": [
+            "NIGHT",
+            "TWILIGHT_1",
+            "TWILIGHT_2",
+            "TWILIGHT_3",
+            "TWILIGHT_4",
+            "DAY",
+            "UNKNOWN",
+            "INVALID"
+          ]
+        }
+      }
+    },
+    "accPedalPosition": {
+      "type": "number",
+      "minimum": 0.0,
+      "maximum": 100.0
+    }
+  }
+}
+```

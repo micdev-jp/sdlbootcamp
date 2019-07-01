@@ -51,6 +51,7 @@
 <li><a class="reference internal" href="#id5">参考情報</a><ul>
 <li><a class="reference internal" href="#python3-ubuntu-16-04-64bit">python3環境構築(ubuntu 16.04(64bit))</a></li>
 <li><a class="reference internal" href="#python-obd">python-OBD詳細情報</a></li>
+<li><a class="reference internal" href="#id6">実装済みパラメータ</a></li>
 </ul>
 </li>
 </ul>
@@ -207,127 +208,233 @@ $ pip3 install obd
 </div>
 <div class="section" id="id6">
 <h3>実装済みパラメータ<a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク">¶</a></h3>
-<p>SDL-CORE Ver4.5.1 に準拠している。
-以下は、JSONフォーマット。</p>
-<p>VehicleData</p>
-<ul class="simple">
-<li>speedfloat型、0〜700(1.0e-1)</li>
-<li>prndlstring型、以下から選択。<ul>
-<li>PARK</li>
-<li>REVERSE</li>
-<li>NEUTRAL</li>
-<li>DRIVE</li>
-<li>SPORT</li>
-<li>LOWGEAR</li>
-<li>FIRST</li>
-<li>SECOND</li>
-<li>THIRD</li>
-<li>FOURTH</li>
-<li>FIFTH</li>
-<li>SIXTH</li>
-<li>SEVENTH</li>
-<li>EIGHTH</li>
-<li>UNKNOWN</li>
-<li>FAULT</li>
-</ul>
-</li>
-<li>gps<ul>
-<li>longitudeDegreesfloat型、-180〜180(1.0e-5)</li>
-<li>latitudeDegreesfloat型、-90〜90(1.0e-5)</li>
-<li>utcYearint型、2010〜2100</li>
-<li>utcMonthint型、1〜12</li>
-<li>utcDayint型、1〜31</li>
-<li>utcHoursint型、0〜23</li>
-<li>utcMinutesint型、0〜59</li>
-<li>utcSecondsint型、0〜59</li>
-<li>compassDirectionstring型、以下から選択。<ul>
-<li>NORTH</li>
-<li>NORTHWEST</li>
-<li>WEST</li>
-<li>SOUTHWEST</li>
-<li>SOUTH</li>
-<li>SOUTHEAST</li>
-<li>EAST</li>
-<li>NORTHEAST</li>
-</ul>
-</li>
-<li>pdopfloat型、0〜1000(1.0e-2)</li>
-<li>hdopfloat型、0〜1000(1.0e-2)</li>
-<li>vdopfloat型、0〜1000(1.0e-2)</li>
-<li>actualbool型</li>
-<li>satellitesint型、0〜31</li>
-<li>dimensionstring型、以下から選択。<ul>
-<li>NO_FIX</li>
-<li>2D</li>
-<li>3D</li>
-</ul>
-</li>
-<li>altitudefloat型、-10000〜10000(1.0e-1)</li>
-<li>headingfloat型、0〜359.99(1.0e-2)</li>
-<li>speedfloat型、0〜500(1.0e-1)</li>
-</ul>
-</li>
-<li>bodyInformation<ul>
-<li>parkBrakeActivebool型</li>
-<li>ignitionStableStatusstring型、以下から選択。<ul>
-<li>IGNITION_SWITCH_NOT_STABLE</li>
-<li>IGNITION_SWITCH_STABLE</li>
-<li>MISSING_FROM_TRANSMITTER</li>
-</ul>
-</li>
-<li>ignitionStatusstring型、以下から選択。<ul>
-<li>UNKNOWN</li>
-<li>OFF</li>
-<li>ACCESSORY</li>
-<li>RUN</li>
-<li>START</li>
-<li>INVALID</li>
-</ul>
-</li>
-<li>driverDoorAjarstring型、以下から選択。<ul>
-<li>None</li>
-<li>false</li>
-<li>true</li>
-</ul>
-</li>
-<li>passengerDoorAjarstring型、以下から選択。<ul>
-<li>None</li>
-<li>false</li>
-<li>true</li>
-</ul>
-</li>
-<li>rearLeftDoorAjarstring型、以下から選択。<ul>
-<li>None</li>
-<li>false</li>
-<li>true</li>
-</ul>
-</li>
-<li>rearRightDoorAjarstring型、以下から選択。<ul>
-<li>None</li>
-<li>false</li>
-<li>true</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>headLampStatus<ul>
-<li>lowBeamsOnbool型</li>
-<li>highBeamsOnbool型</li>
-<li>ambientLightSensorStatusstring型、以下から選択。<ul>
-<li>NIGHT</li>
-<li>TWILIGHT_1</li>
-<li>TWILIGHT_2</li>
-<li>TWILIGHT_3</li>
-<li>TWILIGHT_4</li>
-<li>DAY</li>
-<li>UNKNOWN</li>
-<li>INVALID</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>accPedalPositionfloat型、0〜100(1.0e-1)</li>
-</ul>
+<p>SDL-CORE Ver4.5.1 に準拠している。<br>
+JSON schema</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;vehicleInfo&quot;</span><span class="p">:</span> <span class="p">{</span>
+  <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;object&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;properties&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;speed&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;number&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;minimum&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+      <span class="s2">&quot;maximum&quot;</span><span class="p">:</span> <span class="mf">700.0</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;prndl&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;enum&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;PARK&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;REVERSE&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;NEUTRAL&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;DRIVE&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;SPORT&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;LOWGEAR&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;FIRST&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;SECOND&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;THIRD&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;FOURTH&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;FIFTH&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;SIXTH&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;SEVENTH&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;EIGHTH&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;UNKNOWN&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;FAULT&quot;</span>
+      <span class="p">]</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;gps&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;object&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;properties&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;longitudeDegrees&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;number&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;minimum&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mf">180.00000</span><span class="p">,</span>
+          <span class="s2">&quot;maximum&quot;</span><span class="p">:</span> <span class="mf">180.00000</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;latitudeDegrees&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;number&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;minimum&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mf">90.00000</span><span class="p">,</span>
+          <span class="s2">&quot;maximum&quot;</span><span class="p">:</span> <span class="mf">90.00000</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;utcYear&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;integer&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;minimum&quot;</span><span class="p">:</span> <span class="mi">2010</span><span class="p">,</span>
+          <span class="s2">&quot;maximum&quot;</span><span class="p">:</span> <span class="mi">2100</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;utcMonth&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;integer&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;minimum&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+          <span class="s2">&quot;maximum&quot;</span><span class="p">:</span> <span class="mi">12</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;utcDay&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;integer&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;minimum&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+          <span class="s2">&quot;maximum&quot;</span><span class="p">:</span> <span class="mi">31</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;utcHours&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;integer&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;minimum&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+          <span class="s2">&quot;maximum&quot;</span><span class="p">:</span> <span class="mi">23</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;utcMinutes&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;integer&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;minimum&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+          <span class="s2">&quot;maximum&quot;</span><span class="p">:</span> <span class="mi">59</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;utcSeconds&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;integer&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;minimum&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+          <span class="s2">&quot;maximum&quot;</span><span class="p">:</span> <span class="mi">59</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;compassDirection&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;enum&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;NORTH&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;NORTHWEST&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;WEST&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;SOUTHWEST&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;SOUTH&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;SOUTHEAST&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;EAST&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;NORTHEAST&quot;</span>
+          <span class="p">]</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;pdop&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;number&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;minimum&quot;</span><span class="p">:</span> <span class="mf">0.00</span><span class="p">,</span>
+          <span class="s2">&quot;maximum&quot;</span><span class="p">:</span> <span class="mf">1000.00</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;hdop&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;number&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;minimum&quot;</span><span class="p">:</span> <span class="mf">0.00</span><span class="p">,</span>
+          <span class="s2">&quot;maximum&quot;</span><span class="p">:</span> <span class="mf">1000.00</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;vdop&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;number&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;minimum&quot;</span><span class="p">:</span> <span class="mf">0.00</span><span class="p">,</span>
+          <span class="s2">&quot;maximum&quot;</span><span class="p">:</span> <span class="mf">1000.00</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;actual&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;boolean&quot;</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;satellites&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;integer&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;minimum&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+          <span class="s2">&quot;maximum&quot;</span><span class="p">:</span> <span class="mi">31</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;dimension&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;enum&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;NO_FIX&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;2D&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;3D&quot;</span>
+          <span class="p">]</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;altitude&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;number&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;minimum&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mf">10000.0</span><span class="p">,</span>
+          <span class="s2">&quot;maximum&quot;</span><span class="p">:</span> <span class="mf">10000.0</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;heading&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;number&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;minimum&quot;</span><span class="p">:</span> <span class="mf">0.00</span><span class="p">,</span>
+          <span class="s2">&quot;maximum&quot;</span><span class="p">:</span> <span class="mf">359.99</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;speed&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;number&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;minimum&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+          <span class="s2">&quot;maximum&quot;</span><span class="p">:</span> <span class="mf">500.0</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;bodyInformation&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;object&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;properties&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;parkBrakeActive&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;boolean&quot;</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;ignitionStableStatus&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;enum&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;IGNITION_SWITCH_NOT_STABLE&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;IGNITION_SWITCH_STABLE&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;MISSING_FROM_TRANSMITTER&quot;</span>
+          <span class="p">]</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;ignitionStatus&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;enum&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;UNKNOWN&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;OFF&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;ACCESSORY&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;RUN&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;START&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;INVALID&quot;</span>
+          <span class="p">]</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;driverDoorAjar&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;enum&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;None&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;false&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;true&quot;</span>
+          <span class="p">]</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;passengerDoorAjar&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;enum&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;None&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;false&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;true&quot;</span>
+          <span class="p">]</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;rearLeftDoorAjar&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;enum&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;None&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;false&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;true&quot;</span>
+          <span class="p">]</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;rearRightDoorAjar&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;enum&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;None&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;false&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;true&quot;</span>
+          <span class="p">]</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;headLampStatus&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;object&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;properties&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;lowBeamsOn&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;boolean&quot;</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;highBeamsOn&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;boolean&quot;</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;ambientLightSensorStatus&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;enum&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;NIGHT&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;TWILIGHT_1&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;TWILIGHT_2&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;TWILIGHT_3&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;TWILIGHT_4&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;DAY&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;UNKNOWN&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;INVALID&quot;</span>
+          <span class="p">]</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;accPedalPosition&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;number&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;minimum&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+      <span class="s2">&quot;maximum&quot;</span><span class="p">:</span> <span class="mf">100.0</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 </div>
 </div>
 </div>
