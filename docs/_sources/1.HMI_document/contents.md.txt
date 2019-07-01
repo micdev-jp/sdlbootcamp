@@ -1,7 +1,7 @@
 # 1. HMI Document
 SDLBOOTCAMPのHMIドキュメント
 
-## 1.1 openning画面
+## 1.1 opening画面
 起動した時に表示される画面のため、特に操作することはない。
 
 <img src="../_static/image/openning.png" width=50%>
