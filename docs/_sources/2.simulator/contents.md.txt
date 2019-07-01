@@ -127,11 +127,13 @@ JSON schema
   "type": "object",
   "properties": {
     "speed": {
+      "description": "The vehicle speed in kilometers per hour",
       "type": "number",
       "minimum": 0.0,
       "maximum": 700.0
     },
     "prndl": {
+      "description": "The selected gear.",
       "type": "string",
       "enum": [
         "PARK",
@@ -153,6 +155,7 @@ JSON schema
       ]
     },
     "gps": {
+      "description": "Struct with the GPS data.",
       "type": "object",
       "properties": {
         "longitudeDegrees": {
@@ -166,36 +169,43 @@ JSON schema
           "maximum": 90.00000
         },
         "utcYear": {
+          "description": "The current UTC year.",
           "type": "integer",
           "minimum": 2010,
           "maximum": 2100
         },
         "utcMonth": {
+          "description": "The current UTC month.",
           "type": "integer",
           "minimum": 1,
           "maximum": 12
         },
         "utcDay": {
+          "description": "The current UTC day.",
           "type": "integer",
           "minimum": 1,
           "maximum": 31
         },
         "utcHours": {
+          "description": "The current UTC hour.",
           "type": "integer",
           "minimum": 0,
           "maximum": 23
         },
         "utcMinutes": {
+          "description": "The current UTC minute.",
           "type": "integer",
           "minimum": 0,
           "maximum": 59
         },
         "utcSeconds": {
+          "description": "The current UTC second.",
           "type": "integer",
           "minimum": 0,
           "maximum": 59
         },
         "compassDirection": {
+          "description": "See CompassDirection.",
           "type": "string",
           "enum": [
             "NORTH",
@@ -209,29 +219,35 @@ JSON schema
           ]
         },
         "pdop": {
+          "description": "PDOP",
           "type": "number",
           "minimum": 0.00,
           "maximum": 1000.00
         },
         "hdop": {
+          "description": "HDOP",
           "type": "number",
           "minimum": 0.00,
           "maximum": 1000.00
         },
         "vdop": {
+          "description": "VDOP",
           "type": "number",
           "minimum": 0.00,
           "maximum": 1000.00
         },
         "actual": {
+          "description": "True, if actual. False, if infered.",
           "type": "boolean"
         },
         "satellites": {
+          "description": "Number of satellites in view",
           "type": "integer",
           "minimum": 0,
           "maximum": 31
         },
         "dimension": {
+          "description": "See Dimension",
           "type": "string",
           "enum": [
             "NO_FIX",
@@ -240,16 +256,19 @@ JSON schema
           ]
         },
         "altitude": {
+          "description": "Altitude in meters",
           "type": "number",
           "minimum": -10000.0,
           "maximum": 10000.0
         },
         "heading": {
+          "description": "The heading. North is 0. Resolution is 0.01",
           "type": "number",
           "minimum": 0.00,
           "maximum": 359.99
         },
         "speed": {
+          "description": "The speed in KPH",
           "type": "number",
           "minimum": 0.0,
           "maximum": 500.0
@@ -257,12 +276,15 @@ JSON schema
       }
     },
     "bodyInformation": {
+      "description": "The body information including power modes",
       "type": "object",
       "properties": {
         "parkBrakeActive": {
+          "description": "Must be true if the park brake is active",
           "type": "boolean"
         },
         "ignitionStableStatus": {
+          "description": "Information about the ignition switch. See IgnitionStableStatus.",
           "type": "string",
           "enum": [
             "IGNITION_SWITCH_NOT_STABLE",
@@ -271,6 +293,7 @@ JSON schema
           ]
         },
         "ignitionStatus": {
+          "description": "The status of the ignition. See IgnitionStatus.",
           "type": "string",
           "enum": [
             "UNKNOWN",
@@ -282,6 +305,7 @@ JSON schema
           ]
         },
         "driverDoorAjar": {
+          "description": "References signal \"DrStatDrv_B_Actl\".",
           "type": "string",
           "enum": [
             "None",
@@ -290,6 +314,7 @@ JSON schema
           ]
         },
         "passengerDoorAjar": {
+          "description": "References signal \"DrStatPsngr_B_Actl\".",
           "type": "string",
           "enum": [
             "None",
@@ -298,6 +323,7 @@ JSON schema
           ]
         },
         "rearLeftDoorAjar": {
+          "description": "References signal \"DrStatRl_B_Actl\".",
           "type": "string",
           "enum": [
             "None",
@@ -306,6 +332,7 @@ JSON schema
           ]
         },
         "rearRightDoorAjar": {
+          "description": "References signal \"DrStatRr_B_Actl\".",
           "type": "string",
           "enum": [
             "None",
@@ -316,15 +343,19 @@ JSON schema
       }
     },
     "headLampStatus": {
+      "description": "Status of the head lamps",
       "type": "object",
       "properties": {
         "lowBeamsOn": {
+          "description": "Status of the low beam lamps.",
           "type": "boolean"
         },
         "highBeamsOn": {
+          "description": "Status of the high beam lamps.",
           "type": "boolean"
         },
         "ambientLightSensorStatus": {
+          "description": "Reflects the status of the ambient light sensor.",
           "type": "string",
           "enum": [
             "NIGHT",
@@ -340,6 +371,7 @@ JSON schema
       }
     },
     "accPedalPosition": {
+      "description": "Accelerator pedal position (percentage depressed)",
       "type": "number",
       "minimum": 0.0,
       "maximum": 100.0

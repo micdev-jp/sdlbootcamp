@@ -214,11 +214,13 @@ JSON schema</p>
   <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;object&quot;</span><span class="p">,</span>
   <span class="s2">&quot;properties&quot;</span><span class="p">:</span> <span class="p">{</span>
     <span class="s2">&quot;speed&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;The vehicle speed in kilometers per hour&quot;</span><span class="p">,</span>
       <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;number&quot;</span><span class="p">,</span>
       <span class="s2">&quot;minimum&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
       <span class="s2">&quot;maximum&quot;</span><span class="p">:</span> <span class="mf">700.0</span>
     <span class="p">},</span>
     <span class="s2">&quot;prndl&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;The selected gear.&quot;</span><span class="p">,</span>
       <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
       <span class="s2">&quot;enum&quot;</span><span class="p">:</span> <span class="p">[</span>
         <span class="s2">&quot;PARK&quot;</span><span class="p">,</span>
@@ -240,6 +242,7 @@ JSON schema</p>
       <span class="p">]</span>
     <span class="p">},</span>
     <span class="s2">&quot;gps&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Struct with the GPS data.&quot;</span><span class="p">,</span>
       <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;object&quot;</span><span class="p">,</span>
       <span class="s2">&quot;properties&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="s2">&quot;longitudeDegrees&quot;</span><span class="p">:</span> <span class="p">{</span>
@@ -253,36 +256,43 @@ JSON schema</p>
           <span class="s2">&quot;maximum&quot;</span><span class="p">:</span> <span class="mf">90.00000</span>
         <span class="p">},</span>
         <span class="s2">&quot;utcYear&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;The current UTC year.&quot;</span><span class="p">,</span>
           <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;integer&quot;</span><span class="p">,</span>
           <span class="s2">&quot;minimum&quot;</span><span class="p">:</span> <span class="mi">2010</span><span class="p">,</span>
           <span class="s2">&quot;maximum&quot;</span><span class="p">:</span> <span class="mi">2100</span>
         <span class="p">},</span>
         <span class="s2">&quot;utcMonth&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;The current UTC month.&quot;</span><span class="p">,</span>
           <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;integer&quot;</span><span class="p">,</span>
           <span class="s2">&quot;minimum&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
           <span class="s2">&quot;maximum&quot;</span><span class="p">:</span> <span class="mi">12</span>
         <span class="p">},</span>
         <span class="s2">&quot;utcDay&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;The current UTC day.&quot;</span><span class="p">,</span>
           <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;integer&quot;</span><span class="p">,</span>
           <span class="s2">&quot;minimum&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
           <span class="s2">&quot;maximum&quot;</span><span class="p">:</span> <span class="mi">31</span>
         <span class="p">},</span>
         <span class="s2">&quot;utcHours&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;The current UTC hour.&quot;</span><span class="p">,</span>
           <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;integer&quot;</span><span class="p">,</span>
           <span class="s2">&quot;minimum&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
           <span class="s2">&quot;maximum&quot;</span><span class="p">:</span> <span class="mi">23</span>
         <span class="p">},</span>
         <span class="s2">&quot;utcMinutes&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;The current UTC minute.&quot;</span><span class="p">,</span>
           <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;integer&quot;</span><span class="p">,</span>
           <span class="s2">&quot;minimum&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
           <span class="s2">&quot;maximum&quot;</span><span class="p">:</span> <span class="mi">59</span>
         <span class="p">},</span>
         <span class="s2">&quot;utcSeconds&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;The current UTC second.&quot;</span><span class="p">,</span>
           <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;integer&quot;</span><span class="p">,</span>
           <span class="s2">&quot;minimum&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
           <span class="s2">&quot;maximum&quot;</span><span class="p">:</span> <span class="mi">59</span>
         <span class="p">},</span>
         <span class="s2">&quot;compassDirection&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;See CompassDirection.&quot;</span><span class="p">,</span>
           <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
           <span class="s2">&quot;enum&quot;</span><span class="p">:</span> <span class="p">[</span>
             <span class="s2">&quot;NORTH&quot;</span><span class="p">,</span>
@@ -296,29 +306,35 @@ JSON schema</p>
           <span class="p">]</span>
         <span class="p">},</span>
         <span class="s2">&quot;pdop&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;PDOP&quot;</span><span class="p">,</span>
           <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;number&quot;</span><span class="p">,</span>
           <span class="s2">&quot;minimum&quot;</span><span class="p">:</span> <span class="mf">0.00</span><span class="p">,</span>
           <span class="s2">&quot;maximum&quot;</span><span class="p">:</span> <span class="mf">1000.00</span>
         <span class="p">},</span>
         <span class="s2">&quot;hdop&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;HDOP&quot;</span><span class="p">,</span>
           <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;number&quot;</span><span class="p">,</span>
           <span class="s2">&quot;minimum&quot;</span><span class="p">:</span> <span class="mf">0.00</span><span class="p">,</span>
           <span class="s2">&quot;maximum&quot;</span><span class="p">:</span> <span class="mf">1000.00</span>
         <span class="p">},</span>
         <span class="s2">&quot;vdop&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;VDOP&quot;</span><span class="p">,</span>
           <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;number&quot;</span><span class="p">,</span>
           <span class="s2">&quot;minimum&quot;</span><span class="p">:</span> <span class="mf">0.00</span><span class="p">,</span>
           <span class="s2">&quot;maximum&quot;</span><span class="p">:</span> <span class="mf">1000.00</span>
         <span class="p">},</span>
         <span class="s2">&quot;actual&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;True, if actual. False, if infered.&quot;</span><span class="p">,</span>
           <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;boolean&quot;</span>
         <span class="p">},</span>
         <span class="s2">&quot;satellites&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Number of satellites in view&quot;</span><span class="p">,</span>
           <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;integer&quot;</span><span class="p">,</span>
           <span class="s2">&quot;minimum&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
           <span class="s2">&quot;maximum&quot;</span><span class="p">:</span> <span class="mi">31</span>
         <span class="p">},</span>
         <span class="s2">&quot;dimension&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;See Dimension&quot;</span><span class="p">,</span>
           <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
           <span class="s2">&quot;enum&quot;</span><span class="p">:</span> <span class="p">[</span>
             <span class="s2">&quot;NO_FIX&quot;</span><span class="p">,</span>
@@ -327,16 +343,19 @@ JSON schema</p>
           <span class="p">]</span>
         <span class="p">},</span>
         <span class="s2">&quot;altitude&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Altitude in meters&quot;</span><span class="p">,</span>
           <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;number&quot;</span><span class="p">,</span>
           <span class="s2">&quot;minimum&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mf">10000.0</span><span class="p">,</span>
           <span class="s2">&quot;maximum&quot;</span><span class="p">:</span> <span class="mf">10000.0</span>
         <span class="p">},</span>
         <span class="s2">&quot;heading&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;The heading. North is 0. Resolution is 0.01&quot;</span><span class="p">,</span>
           <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;number&quot;</span><span class="p">,</span>
           <span class="s2">&quot;minimum&quot;</span><span class="p">:</span> <span class="mf">0.00</span><span class="p">,</span>
           <span class="s2">&quot;maximum&quot;</span><span class="p">:</span> <span class="mf">359.99</span>
         <span class="p">},</span>
         <span class="s2">&quot;speed&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;The speed in KPH&quot;</span><span class="p">,</span>
           <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;number&quot;</span><span class="p">,</span>
           <span class="s2">&quot;minimum&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
           <span class="s2">&quot;maximum&quot;</span><span class="p">:</span> <span class="mf">500.0</span>
@@ -344,12 +363,15 @@ JSON schema</p>
       <span class="p">}</span>
     <span class="p">},</span>
     <span class="s2">&quot;bodyInformation&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;The body information including power modes&quot;</span><span class="p">,</span>
       <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;object&quot;</span><span class="p">,</span>
       <span class="s2">&quot;properties&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="s2">&quot;parkBrakeActive&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Must be true if the park brake is active&quot;</span><span class="p">,</span>
           <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;boolean&quot;</span>
         <span class="p">},</span>
         <span class="s2">&quot;ignitionStableStatus&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Information about the ignition switch. See IgnitionStableStatus.&quot;</span><span class="p">,</span>
           <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
           <span class="s2">&quot;enum&quot;</span><span class="p">:</span> <span class="p">[</span>
             <span class="s2">&quot;IGNITION_SWITCH_NOT_STABLE&quot;</span><span class="p">,</span>
@@ -358,6 +380,7 @@ JSON schema</p>
           <span class="p">]</span>
         <span class="p">},</span>
         <span class="s2">&quot;ignitionStatus&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;The status of the ignition. See IgnitionStatus.&quot;</span><span class="p">,</span>
           <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
           <span class="s2">&quot;enum&quot;</span><span class="p">:</span> <span class="p">[</span>
             <span class="s2">&quot;UNKNOWN&quot;</span><span class="p">,</span>
@@ -369,6 +392,7 @@ JSON schema</p>
           <span class="p">]</span>
         <span class="p">},</span>
         <span class="s2">&quot;driverDoorAjar&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;References signal </span><span class="se">\&quot;</span><span class="s2">DrStatDrv_B_Actl</span><span class="se">\&quot;</span><span class="s2">.&quot;</span><span class="p">,</span>
           <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
           <span class="s2">&quot;enum&quot;</span><span class="p">:</span> <span class="p">[</span>
             <span class="s2">&quot;None&quot;</span><span class="p">,</span>
@@ -377,6 +401,7 @@ JSON schema</p>
           <span class="p">]</span>
         <span class="p">},</span>
         <span class="s2">&quot;passengerDoorAjar&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;References signal </span><span class="se">\&quot;</span><span class="s2">DrStatPsngr_B_Actl</span><span class="se">\&quot;</span><span class="s2">.&quot;</span><span class="p">,</span>
           <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
           <span class="s2">&quot;enum&quot;</span><span class="p">:</span> <span class="p">[</span>
             <span class="s2">&quot;None&quot;</span><span class="p">,</span>
@@ -385,6 +410,7 @@ JSON schema</p>
           <span class="p">]</span>
         <span class="p">},</span>
         <span class="s2">&quot;rearLeftDoorAjar&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;References signal </span><span class="se">\&quot;</span><span class="s2">DrStatRl_B_Actl</span><span class="se">\&quot;</span><span class="s2">.&quot;</span><span class="p">,</span>
           <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
           <span class="s2">&quot;enum&quot;</span><span class="p">:</span> <span class="p">[</span>
             <span class="s2">&quot;None&quot;</span><span class="p">,</span>
@@ -393,6 +419,7 @@ JSON schema</p>
           <span class="p">]</span>
         <span class="p">},</span>
         <span class="s2">&quot;rearRightDoorAjar&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;References signal </span><span class="se">\&quot;</span><span class="s2">DrStatRr_B_Actl</span><span class="se">\&quot;</span><span class="s2">.&quot;</span><span class="p">,</span>
           <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
           <span class="s2">&quot;enum&quot;</span><span class="p">:</span> <span class="p">[</span>
             <span class="s2">&quot;None&quot;</span><span class="p">,</span>
@@ -403,15 +430,19 @@ JSON schema</p>
       <span class="p">}</span>
     <span class="p">},</span>
     <span class="s2">&quot;headLampStatus&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Status of the head lamps&quot;</span><span class="p">,</span>
       <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;object&quot;</span><span class="p">,</span>
       <span class="s2">&quot;properties&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="s2">&quot;lowBeamsOn&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Status of the low beam lamps.&quot;</span><span class="p">,</span>
           <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;boolean&quot;</span>
         <span class="p">},</span>
         <span class="s2">&quot;highBeamsOn&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Status of the high beam lamps.&quot;</span><span class="p">,</span>
           <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;boolean&quot;</span>
         <span class="p">},</span>
         <span class="s2">&quot;ambientLightSensorStatus&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Reflects the status of the ambient light sensor.&quot;</span><span class="p">,</span>
           <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
           <span class="s2">&quot;enum&quot;</span><span class="p">:</span> <span class="p">[</span>
             <span class="s2">&quot;NIGHT&quot;</span><span class="p">,</span>
@@ -427,6 +458,7 @@ JSON schema</p>
       <span class="p">}</span>
     <span class="p">},</span>
     <span class="s2">&quot;accPedalPosition&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Accelerator pedal position (percentage depressed)&quot;</span><span class="p">,</span>
       <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;number&quot;</span><span class="p">,</span>
       <span class="s2">&quot;minimum&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
       <span class="s2">&quot;maximum&quot;</span><span class="p">:</span> <span class="mf">100.0</span>
@@ -459,7 +491,7 @@ JSON schema</p>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2019, micware.
-      このドキュメントは <a href="http://sphinx-doc.org/">Sphinx</a> 2.1.2 で生成しました。
+      このドキュメントは <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5 で生成しました。
     </div>
   </body>
 </html>
