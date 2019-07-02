@@ -1,5 +1,8 @@
 # 0. SDLBOOTCAMP
 
+## 0.0 免責事項
+当社・当サイトは、サイト記事およびバイナリイメージにより生じたあらゆる損害について一切の責任を負いません。
+
 ## 0.1 必要機材
 
 (参考)<br>
@@ -29,7 +32,7 @@
 <br>[https://github.com/micdev-jp/sdlbootcamp/tree/master/img](https://github.com/micdev-jp/sdlbootcamp/tree/master/img)
 * SDカードに焼く (SDカードが /dev/sdx にマウントされている場合)
 ```
-$ gip -dc < sdlbootcamp.img.gz | sudo dd of=/dev/sdx bs=4M
+$ gzip -dc < sdlbootcamp.img.gz | sudo dd of=/dev/sdx bs=4M
 $ sync
 ```
 ## 0.3 SDLBOOTCAMP組立～起動

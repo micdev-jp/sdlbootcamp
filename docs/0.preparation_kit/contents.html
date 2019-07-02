@@ -48,9 +48,10 @@
   <h3><a href="../index.html">目次</a></h3>
   <ul>
 <li><a class="reference internal" href="#">0. SDLBOOTCAMP</a><ul>
-<li><a class="reference internal" href="#id1">0.1 必要機材</a></li>
+<li><a class="reference internal" href="#id1">0.0 免責事項</a></li>
+<li><a class="reference internal" href="#id2">0.1 必要機材</a></li>
 <li><a class="reference internal" href="#sd">0.2 ブート用SDカード作成方法</a></li>
-<li><a class="reference internal" href="#id2">0.3 SDLBOOTCAMP組立～起動</a></li>
+<li><a class="reference internal" href="#id3">0.3 SDLBOOTCAMP組立～起動</a></li>
 <li><a class="reference internal" href="#sdlbootcamp-ssh">0.4 SDLBOOTCAMPのログ取得方法 (sshを使う)</a></li>
 </ul>
 </li>
@@ -83,7 +84,11 @@
   <div class="section" id="sdlbootcamp">
 <h1>0. SDLBOOTCAMP<a class="headerlink" href="#sdlbootcamp" title="このヘッドラインへのパーマリンク">¶</a></h1>
 <div class="section" id="id1">
-<h2>0.1 必要機材<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2>0.0 免責事項<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>当社・当サイトは、サイト記事およびバイナリイメージにより生じたあらゆる損害について一切の責任を負いません。</p>
+</div>
+<div class="section" id="id2">
+<h2>0.1 必要機材<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>(参考)<br>
 <a class="reference external" href="https://raspberry-pi.ksyic.com/page/page/pgp.id/4">Raspberry Pi 7インチ タッチ・スクリーン ディスプレイ 接続・取り付け方法</a></p>
 <ul class="simple">
@@ -124,13 +129,13 @@
 <br><a class="reference external" href="https://github.com/micdev-jp/sdlbootcamp/tree/master/img">https://github.com/micdev-jp/sdlbootcamp/tree/master/img</a></p></li>
 <li><p>SDカードに焼く (SDカードが /dev/sdx にマウントされている場合)</p></li>
 </ul>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ gip -dc &lt; sdlbootcamp.img.gz | sudo dd of=/dev/sdx bs=4M
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ gzip -dc &lt; sdlbootcamp.img.gz | sudo dd of=/dev/sdx bs=4M
 $ sync
 </pre></div>
 </div>
 </div>
-<div class="section" id="id2">
-<h2>0.3 SDLBOOTCAMP組立～起動<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="id3">
+<h2>0.3 SDLBOOTCAMP組立～起動<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>こちらを参照してください<br>
 <a class="reference external" href="https://raspberry-pi.ksyic.com/page/page/pgp.id/4">Raspberry Pi 7インチ タッチ・スクリーン ディスプレイ 接続・取り付け方法</a></p>
 </div>
